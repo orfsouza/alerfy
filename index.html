@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Notificações</title>
+<meta name="theme-color" content="#5b5bf0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toast" role="alert"><div class="ic" id="tI"></div><div class="grow"><div class="t" id="tT"></div><div class="m" id="tM"></div></div></div>
+<main>
+<h1>🔔 Simulador de Notificações</h1>
+<div class="tabs">
+<button id="b1" class="on" onclick="tab(1)">Cadastrar</button>
+<button id="b2" onclick="tab(2)">Central<span class="badge" id="bg" hidden>0</span></button>
+</div>
+<section id="s1">
+<div class="card">
+<h2>Nova notificação</h2>
+<label>Título</label><input id="ti" placeholder="Ex.: Pedido enviado">
+<label>Mensagem</label><textarea id="me" rows="2" placeholder="Ex.: Seu pedido saiu para entrega"></textarea>
+<div class="row">
+<div><label>Emoji</label><select id="ic"><option>🔔</option><option>📦</option><option>💬</option><option>⏰</option><option>🎉</option><option>💳</option><option>⚠️</option></select></div>
+<div><label>Disparo</label><select id="dl"><option value="0">Manual</option><option value="5">Em 5 s</option><option value="15">Em 15 s</option><option value="60">Em 1 min</option></select></div>
+</div>
+<label>Logo da notificação (opcional)</label>
+<div class="row" style="align-items:center">
+<div class="ic" id="lp" style="flex:none;width:48px;height:48px">🖼️</div>
+<input type="file" id="lf" accept="image/*" onchange="pickLogo(this)">
+<button class="btn g s" style="flex:none" onclick="clearLogo()">Remover</button>
+</div>
+<div class="row" style="margin-top:12px"><button class="btn" onclick="add()">Cadastrar</button><button class="btn g" onclick="perm()" id="pb">Ativar alertas do sistema</button></div>
+<p class="hint">Disparos agendados funcionam com o app aberto. Sem a logo, o alerta do sistema usa o ícone do app.</p>
+</div>
+<div class="card"><h2>Cadastradas</h2><div id="lst"></div></div>
+</section>
+<section id="s2" hidden>
+<div class="card">
+<div class="row" style="align-items:center"><h2 style="margin:0">Recebidas</h2><div style="text-align:right"><button class="btn g s" onclick="readAll()">Marcar lidas</button> <button class="btn g s" onclick="clr()">Limpar</button></div></div>
+<div id="inb"></div>
+</div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
